@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  padding: 1.5rem 3rem;
+  align-items: center;
+  color: white;
+  background-color: #021526;
+}
+.logo {
+  flex-grow: 1;
+  font-size: 2.4rem;
+  font-weight: 600;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+.searchInput {
+  flex-grow: 1;
+
+  & input {
+    border-radius: 2.4rem;
+    padding: 0.8rem 1.2rem;
+    width: 100%;
+    line-height: 2.4rem;
+    font-size: 1.7rem;
+    outline: none;
+    border: 2px solid #021526;
+
+    &:focus {
+      border: 2px solid #cd5c08;
+      -webkit-box-shadow: 5px 5px 15px -4px #cd5c08;
+      box-shadow: 5px 5px 15px -4px #cd5c08;
+    }
+  }
+}
+.icon {
+  flex-grow: 1;
+  text-align: right;
+  position: relative;
+  
+  &:hover {
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+}
+.count {
+  position: absolute;
+  top: -1.2rem;
+  right: -1.3rem;
+  font-size: 2rem;
+  background-color: #cd5c08;
+  border-radius: 50%;
+  padding: 0.05rem 0.5rem;
+  display: inline-block;
+}
