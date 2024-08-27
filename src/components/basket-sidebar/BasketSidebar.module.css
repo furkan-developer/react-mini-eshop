@@ -1,0 +1,52 @@
+.basketSidebar {
+  background-color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  padding: 1rem 2rem;
+  width: 300px;
+  overflow-y: auto;
+  box-shadow: -12px 0px 24px -9px #021526;
+  -webkit-box-shadow: -12px 0px 24px -9px #021526;
+  -moz-box-shadow: -12px 0px 24px -9px #021526;
+
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  & button {
+    background-color: #021526;
+    border: 1px solid #021526;
+    color: white;
+    padding: 1rem 1.4rem;
+    border-radius: 2rem;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.closeIcon {
+  color: #ff0000;
+  font-size: 2.5rem;
+
+  cursor: pointer;
+}
+
+.basketItem {
+  display: flex;
+  justify-content: space-between;
+
+  & img {
+    width: 20%;
+    height: auto;
+  }
+
+  & .itemName {
+    font-weight: 600;
+  }
+  & .itemPrice {
+    color: #ff0000;
+  }
+}
