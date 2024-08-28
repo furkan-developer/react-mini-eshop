@@ -1,81 +1,33 @@
 import { url } from 'inspector';
 import styles from './ListProducts.module.css';
+import { useQuery } from '@tanstack/react-query';
 
 const ListProducts: React.FunctionComponent = () => {
+    const { isPending, error, data } = useQuery({
+        queryKey: ['repoData'],
+        queryFn: () =>
+            fetch(`${process.env.REACT_APP_Local_Host}/products`).then((res) =>
+                res.json(),
+            ),
+    })
 
     return <div className={styles.productList}>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/headphone-1.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
+        {isPending && <p>Loading products</p>}
+        {error && <p>An Error is occured while fetching product datas</p>}
+        {data && data.length > 0 && data.map((product: any) => {
+            return <div key={product.id} className={styles.productCard}>
+                <div>
+                    <div style={{
+                        backgroundImage: `url(${'/images'}${product.imageUrl})`
+                    }} className={styles.cardImage} ></div>
+                    <div className={styles.productInformation}>
+                        <p className={styles.productName}>{product.productName}</p>
+                        <p className={styles.productPrice}>${product.price}</p>
+                        <button type='button'>Add to basket</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/headphone-2.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
-                </div>
-            </div>
-        </div>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/laptop-1.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
-                </div>
-            </div>
-        </div>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/camera.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
-                </div>
-            </div>
-        </div>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/laptop-2.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
-                </div>
-            </div>
-        </div>
-        <div className={styles.productCard}>
-            <div>
-                <div style={{
-                    backgroundImage: `url(${'/images/keyboard.jpg'})`
-                }} className={styles.cardImage} ></div>
-                <div className={styles.productInformation}>
-                    <p className={styles.productName}>product name</p>
-                    <p className={styles.productPrice}>$190.99</p>
-                    <button type='button'>Add to basket</button>
-                </div>
-            </div>
-        </div>
+        })}
     </div>
 }
 
