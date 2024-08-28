@@ -1,0 +1,10 @@
+{
+    "products":[
+        {"id":1,"productName": "Hyperx Headphone", "price":"190.99", "imageUrl":"/headphone-1.jpg"},
+        {"id":2,"productName": "James Donkey Headphone", "price":"199.99", "imageUrl":"/headphone-2.jpg"},
+        {"id":3,"productName": "Monstor Laptop", "price":"200.00", "imageUrl":"/Laptop-1.jpg"},
+        {"id":4,"productName": "Asus Laptop", "price":"245.55", "imageUrl":"/Laptop-2.jpg"},
+        {"id":5,"productName": "Samsung Camera", "price":"300.00", "imageUrl":"/camera.jpg"},
+        {"id":6,"productName": "Monster Keyboard", "price":"120.00", "imageUrl":"/keyboard.jpg"}
+    ]
+}
