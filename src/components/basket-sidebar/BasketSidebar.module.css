@@ -49,4 +49,10 @@
   & .itemPrice {
     color: #ff0000;
   }
+
+  & .itemRemoveIcon {
+    font-size: 1.5rem;
+    align-self: flex-start;
+    cursor: pointer;
+  }
 }
