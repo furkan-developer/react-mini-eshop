@@ -21,7 +21,7 @@ const Home: React.FunctionComponent = () => {
     }
 
     return <>
-        <Header shiftVisibilityOfBasketSidebar={shiftVisibilityOfBasketSidebar} />
+        <Header shiftVisibilityOfBasketSidebar={shiftVisibilityOfBasketSidebar} basketItems={basketItems} />
         <ListProducts />
 
         {displayBasketSidebar && <BasketSidebar setBasketItems={setBasketItems} basketItems={basketItems} shiftVisibilityOfBasketSidebar={shiftVisibilityOfBasketSidebar} />}
