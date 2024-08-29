@@ -32,8 +32,8 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
             basketItem.count -= 1;
             if (basketItem.count <= 0) {
                 const indexNumber = basketItems.indexOf(basketItem);
-                basketItems.splice(indexNumber,1);
-            
+                basketItems.splice(indexNumber, 1);
+
                 setBasketItems(() => [...basketItems]);
                 return;
             }
@@ -49,7 +49,7 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
         </div>
         {basketItems && basketItems.length > 0 && basketItems.map(item => {
             return <div key={item.product.id} className={styles.basketItem}>
-                <img src={item.product.imageUrl} alt="" />
+                <img src={`/images${item.product.imageUrl}`} alt="" />
                 <div>
                     <p className={styles.itemName}>{item.product.productName}</p>
                     <p className={styles.itemPrice}>{item.product.price}</p>

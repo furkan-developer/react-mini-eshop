@@ -9,11 +9,7 @@ const Home: React.FunctionComponent = () => {
     // State to control visibility of BasketSidebar component
     const [displayBasketSidebar, setDisplayBasketSidebar] = useState(false);
     // State to store basket items
-    const [basketItems, setBasketItems] = useState<BasketItem[]>([
-        { product: { id: 1, price: 200, productName: "Product Name-1", imageUrl: "/images/headphone-1.jpg" }, count: 1 },
-        { product: { id: 2, price: 200, productName: "Product Name-2", imageUrl: "/images/headphone-1.jpg" }, count: 2 },
-        { product: { id: 3, price: 200, productName: "Product Name-3", imageUrl: "/images/headphone-1.jpg" }, count: 3 },
-    ]);
+    const [basketItems, setBasketItems] = useState<BasketItem[]>([]);
 
     // Callback to trigger visibility of BasketSidebar component
     function shiftVisibilityOfBasketSidebar(): void {
@@ -22,7 +18,7 @@ const Home: React.FunctionComponent = () => {
 
     return <>
         <Header shiftVisibilityOfBasketSidebar={shiftVisibilityOfBasketSidebar} basketItems={basketItems} />
-        <ListProducts />
+        <ListProducts setBasketItems={setBasketItems} basketItems={basketItems} />
 
         {displayBasketSidebar && <BasketSidebar setBasketItems={setBasketItems} basketItems={basketItems} shiftVisibilityOfBasketSidebar={shiftVisibilityOfBasketSidebar} />}
     </>
