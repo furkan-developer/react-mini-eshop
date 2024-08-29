@@ -14,7 +14,7 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
     // This handler remove basket item corresponding to itemId
     const removeIconClickHandler = (itemId: number) => {
         setBasketItems(basketItems.filter(item =>
-            item.Id !== itemId
+            item.id !== itemId
         ));
     }
 
@@ -24,13 +24,13 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
             <IoMdClose className={styles.closeIcon} onClick={shiftVisibilityOfBasketSidebar} />
         </div>
         {basketItems && basketItems.length > 0 && basketItems.map(item => {
-            return <div key={item.Id} className={styles.basketItem}>
-                <img src={item.ImageUrl} alt="" />
+            return <div key={item.id} className={styles.basketItem}>
+                <img src={item.imageUrl} alt="" />
                 <div>
-                    <p className={styles.itemName}>{item.ProductName}</p>
-                    <p className={styles.itemPrice}>{item.Price}</p>
+                    <p className={styles.itemName}>{item.productName}</p>
+                    <p className={styles.itemPrice}>{item.price}</p>
                 </div>
-                <FaRegTrashAlt onClick={() => { removeIconClickHandler(item.Id) }} className={styles.itemRemoveIcon} />
+                <FaRegTrashAlt onClick={() => { removeIconClickHandler(item.id) }} className={styles.itemRemoveIcon} />
             </div>
         })}
         <button type="button">Checkout</button>
