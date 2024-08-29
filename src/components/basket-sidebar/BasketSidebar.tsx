@@ -1,4 +1,4 @@
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaRegTrashAlt } from "react-icons/fa";
 import styles from './BasketSidebar.module.css';
 import { BasketItem, Product } from "../../types";
@@ -18,6 +18,30 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
         ));
     }
 
+    const incrementIconClickHandler = (itemId: number) => {
+        const item = basketItems.find((item) => item.product.id === itemId);
+        if (item) {
+            item.count += 1;
+            setBasketItems(() => [...basketItems])
+        }
+    }
+
+    const decrementIconClickHandler = (itemId: number) => {
+        const basketItem = basketItems.find((item) => item.product.id === itemId);
+        if (basketItem) {
+            basketItem.count -= 1;
+            if (basketItem.count <= 0) {
+                const indexNumber = basketItems.indexOf(basketItem);
+                basketItems.splice(indexNumber,1);
+            
+                setBasketItems(() => [...basketItems]);
+                return;
+            }
+
+            setBasketItems(() => [...basketItems]);
+        }
+    }
+
     return <aside className={styles.basketSidebar}>
         <h2>Your Basket</h2>
         <div>
@@ -30,6 +54,11 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
                     <p className={styles.itemName}>{item.product.productName}</p>
                     <p className={styles.itemPrice}>{item.product.price}</p>
                 </div>
+                <div className={styles.countIndicator}>
+                    <span onClick={() => incrementIconClickHandler(item.product.id)}><IoIosArrowUp /></span>
+                    <span>{item.count}</span>
+                    <span onClick={() => decrementIconClickHandler(item.product.id)}><IoIosArrowDown /></span>
+                </div>
                 <FaRegTrashAlt onClick={() => { removeIconClickHandler(item.product.id) }} className={styles.itemRemoveIcon} />
             </div>
         })}
@@ -38,3 +67,5 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
 }
 
 export default BasketSidebar
+
+
