@@ -1,12 +1,12 @@
 import { IoMdClose } from "react-icons/io";
 import { FaRegTrashAlt } from "react-icons/fa";
 import styles from './BasketSidebar.module.css';
-import { Product } from "../../types";
+import { BasketItem, Product } from "../../types";
 
 type props = {
     shiftVisibilityOfBasketSidebar: () => void,
-    setBasketItems: React.Dispatch<React.SetStateAction<Product[]>>
-    basketItems: Product[]
+    setBasketItems: React.Dispatch<React.SetStateAction<BasketItem[]>>
+    basketItems: BasketItem[]
 }
 
 const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasketSidebar, basketItems, setBasketItems }) => {
@@ -14,7 +14,7 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
     // This handler remove basket item corresponding to itemId
     const removeIconClickHandler = (itemId: number) => {
         setBasketItems(basketItems.filter(item =>
-            item.id !== itemId
+            item.product.id !== itemId
         ));
     }
 
@@ -24,13 +24,13 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
             <IoMdClose className={styles.closeIcon} onClick={shiftVisibilityOfBasketSidebar} />
         </div>
         {basketItems && basketItems.length > 0 && basketItems.map(item => {
-            return <div key={item.id} className={styles.basketItem}>
-                <img src={item.imageUrl} alt="" />
+            return <div key={item.product.id} className={styles.basketItem}>
+                <img src={item.product.imageUrl} alt="" />
                 <div>
-                    <p className={styles.itemName}>{item.productName}</p>
-                    <p className={styles.itemPrice}>{item.price}</p>
+                    <p className={styles.itemName}>{item.product.productName}</p>
+                    <p className={styles.itemPrice}>{item.product.price}</p>
                 </div>
-                <FaRegTrashAlt onClick={() => { removeIconClickHandler(item.id) }} className={styles.itemRemoveIcon} />
+                <FaRegTrashAlt onClick={() => { removeIconClickHandler(item.product.id) }} className={styles.itemRemoveIcon} />
             </div>
         })}
         <button type="button">Checkout</button>

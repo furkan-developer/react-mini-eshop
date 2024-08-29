@@ -1,10 +1,10 @@
-import { Product } from '../../types';
+import { BasketItem, Product } from '../../types';
 import styles from './Header.module.css';
 import { BsFillBasketFill } from "react-icons/bs";
 
 type props = {
     shiftVisibilityOfBasketSidebar: () => void,
-    basketItems: Product[]
+    basketItems: BasketItem[]
 }
 
 const Header: React.FunctionComponent<props> = ({ shiftVisibilityOfBasketSidebar, basketItems }) => {

@@ -4,3 +4,8 @@ export type Product = {
     price: number,
     imageUrl: string
 }
+
+export type BasketItem = {
+    product: Product,
+    count: number
+}
