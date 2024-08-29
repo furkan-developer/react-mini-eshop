@@ -1,9 +1,10 @@
 import { url } from 'inspector';
 import styles from './ListProducts.module.css';
 import { useQuery } from '@tanstack/react-query';
+import { Product } from '../../types';
 
 const ListProducts: React.FunctionComponent = () => {
-    const { isPending, error, data } = useQuery({
+    const { isPending, error, data } = useQuery<Product[]>({
         queryKey: ['repoData'],
         queryFn: () =>
             fetch(`${process.env.REACT_APP_Local_Host}/products`).then((res) =>
@@ -14,7 +15,7 @@ const ListProducts: React.FunctionComponent = () => {
     return <div className={styles.productList}>
         {isPending && <p>Loading products</p>}
         {error && <p>An Error is occured while fetching product datas</p>}
-        {data && data.length > 0 && data.map((product: any) => {
+        {data && data.length > 0 && data.map((product) => {
             return <div key={product.id} className={styles.productCard}>
                 <div>
                     <div style={{
