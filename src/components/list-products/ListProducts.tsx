@@ -12,7 +12,7 @@ const ListProducts: React.FunctionComponent<props> = ({ setBasketItems, basketIt
     const { isPending, error, data } = useQuery<Product[]>({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch(`${process.env.REACT_APP_Local_Host}/products`).then((res) =>
+            fetch(`${process.env.REACT_APP_LOCAL_HOST}/products`).then((res) =>
                 res.json(),
             ),
     })
@@ -40,7 +40,7 @@ const ListProducts: React.FunctionComponent<props> = ({ setBasketItems, basketIt
             return <div key={product.id} className={styles.productCard}>
                 <div>
                     <div style={{
-                        backgroundImage: `url(${'/images'}${product.imageUrl})`
+                        backgroundImage: `url(${process.env.REACT_APP_IMAGES_DIRECTORY}${product.imageUrl})`
                     }} className={styles.cardImage} ></div>
                     <div className={styles.productInformation}>
                         <p className={styles.productName}>{product.productName}</p>

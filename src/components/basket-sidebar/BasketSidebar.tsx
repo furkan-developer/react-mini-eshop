@@ -49,7 +49,7 @@ const BasketSidebar: React.FunctionComponent<props> = ({ shiftVisibilityOfBasket
         </div>
         {basketItems && basketItems.length > 0 && basketItems.map(item => {
             return <div key={item.product.id} className={styles.basketItem}>
-                <img src={`/images${item.product.imageUrl}`} alt="" />
+                <img src={`${process.env.REACT_APP_IMAGES_DIRECTORY}${item.product.imageUrl}`} alt="" />
                 <div>
                     <p className={styles.itemName}>{item.product.productName}</p>
                     <p className={styles.itemPrice}>{item.product.price}</p>
