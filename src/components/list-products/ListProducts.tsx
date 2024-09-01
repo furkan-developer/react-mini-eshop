@@ -2,6 +2,7 @@ import { url } from 'inspector';
 import styles from './ListProducts.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { BasketItem, Product } from '../../types';
+import { memo } from 'react';
 
 type props = {
     setBasketItems: React.Dispatch<React.SetStateAction<BasketItem[]>>,
@@ -53,5 +54,4 @@ const ListProducts: React.FunctionComponent<props> = ({ setBasketItems, basketIt
     </div>
 }
 
-export default ListProducts;
-
+export default memo(ListProducts);
